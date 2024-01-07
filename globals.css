@@ -303,3 +303,18 @@ button, a.button {
   background-color: var(--demo);
   font-size: 0.875rem;
 }
+
+
+body {
+  background-color: lightyellow;
+}
+
+h1 {
+  font-size: 2em;
+  /* Change the font size of h1 elements */
+}
+
+p {
+  font-family: 'Arial', sans-serif;
+  /* Change the font family of p elements */
+}

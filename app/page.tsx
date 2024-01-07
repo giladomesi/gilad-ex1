@@ -1,54 +1,99 @@
-import WebsiteScreen from '@/lib/components/website-screen';
-import { COURSE_WELCOME_TEXT } from '@/lib/config';
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
+import {useState} from 'react';
+import '@/globals.css';
+import Navbar from "@/lib/components/navbar";
 
 export default function Home() {
-  return (
-    <WebsiteScreen>
-      <div className="grid">
-        <div className="center padding-2 text-xl">
-          <span>
-            {COURSE_WELCOME_TEXT}
-          </span>
+    const [showGif, setShowGif] = useState(false);
+    const direction = 'ltr';
+
+    const handleButtonClick = () => {
+        setShowGif(true);
+
+        setTimeout(() => {
+            setShowGif(false);
+        }, 10000); // Adjust the time as needed
+    };
+
+    return (
+        <div dir={direction}>
+            <div id="main">
+                <div className="container">
+                    <Navbar/>
+                    <h1>Why <em>Bananas</em> are Not <em>Trees</em></h1>
+                    <p>
+                        Bananas are often mistakenly referred to as trees, but they are not true
+                        trees. In botanical terms, bananas are classified as herbaceous plants.
+                        Unlike trees, they do not have a woody stem or trunk.
+                    </p>
+                    <p>
+                        The confusion may arise from the appearance of banana plants, which
+                        feature large leaves and a structure that resembles a tree. However,
+                        bananas belong to the genus Musa and are technically giant herbs.
+                    </p>
+                    <br/>
+                    {showGif && (
+                        <iframe
+                            src="https://giphy.com/embed/3oa97KpO7UP9sQXAZl"
+                            width="480"
+                            height="480"
+                            allowFullScreen>
+                        </iframe>
+
+                    )}
+                    <button onClick={handleButtonClick}>
+                        <img
+                            src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1795358/banana-tree-clipart-xl.png"
+                            alt="Button Image"
+                            width={100}
+                            height={100}
+                        />
+                        <span>Do you want a banana?</span>
+                    </button>
+                    <br/>
+                    <p>
+                        Despite their herbaceous nature, banana plants are often referred to as
+                        banana trees due to their size and structure. The stem of a banana
+                        plant is called a pseudostem, composed of tightly packed leaf bases.
+                        This pseudostem provides support for the plant but does not contain
+                        true wood.
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>No Woody Trunk:</strong> Unlike trees, bananas lack a woody
+                            trunk.
+                        </li>
+                        <li>
+                            <strong>Herbaceous Structure:</strong> Bananas are classified as
+                            herbaceous plants with a pseudostem.
+                        </li>
+                        <li>
+                            <strong>Botanical Classification:</strong> Bananas belong to the
+                            genus Musa, making them giant herbs.
+                        </li>
+                    </ul>
+                    <p>
+                        In conclusion, while bananas may share some visual similarities with
+                        trees, they are, in fact, giant herbs. Understanding the botanical
+                        characteristics of bananas helps dispel the common misconception that
+                        they are trees.
+                    </p>
+                    <iframe
+                        style={{borderRadius: "12px"}}
+                        src="https://open.spotify.com/embed/episode/6fzczq1m6ydHy7901EVfhH?utm_source=generator&t=0"
+                        width="100%"
+                        height="152"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+                    <p>
+                        Explore the fascinating world of bananas in this video. Learn more about
+                        their unique characteristics and why they are not considered trees in
+                        the botanical sense.
+                    </p>
+                    <a href="https://en.wikipedia.org/wiki/Banana">Learn more about bananas</a>
+                </div>
+            </div>
         </div>
-        <div className="center padding-2">
-          <Image
-            src="/huji.png"
-            alt="HUJI Logo"
-            width={320}
-            height={100}
-            priority
-          />
-        </div>
-        <div className="center padding-2">
-          <Image
-            src="/bezalel.png"
-            alt="Bezalel Logo"
-            className="item"
-            width={320}
-            height={100}
-            priority
-          />
-        </div>
-        <div>
-          <h1 className="center text-xxxl">
-            Lorem Ipsum
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus sit amet nunc nec vehicula. Fusce ornare nec nulla non imperdiet. Fusce vel sodales justo. Sed efficitur arcu lorem, at iaculis odio ultricies et. Duis rutrum urna nec elit bibendum, sed hendrerit nulla posuere. Vestibulum vestibulum, ante non tincidunt posuere, dui arcu lacinia nisl, nec rhoncus massa arcu ac ipsum. Nam congue interdum tortor, eu dignissim massa scelerisque vitae. Sed ultricies bibendum congue. Praesent non magna id ligula maximus luctus. Donec vitae nibh quis neque luctus sagittis et eget nunc. Aliquam id ullamcorper lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur tempor quis dolor a lacinia.
-          </p>
-          <ul>
-            <li>Aliquam maximus tellus sed lacus venenatis, ac cursus eros mollis.</li>
-            <li>In id ante sed sem pharetra molestie et vitae arcu.</li>
-            <li>Cras pharetra turpis at pretium elementum.</li>
-            <li>Donec ultrices felis vel lectus auctor iaculis.</li>
-          </ul>
-          <p>
-            See our <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/tree/main/reference">Reference Material</Link> on <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/blob/main/reference/html.md">HTML</Link>, <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/blob/main/reference/css.md">CSS</Link>, and <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/blob/main/reference/javascript.md">JavaScript</Link>.
-          </p>
-        </div>
-      </div>
-    </WebsiteScreen>
-  )
+    )
 }
